@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Guage Css Transition</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            flex-direction: column;
+            background: linear-gradient(135deg,#ece9e6, #ffffff);
+
+        }
+        .liquid-meter{
+            position: relative;
+            width: 150px;
+            height: 300px;
+            border:3px solid #007bff;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .liquid{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height:50%;
+            /* Default Height */
+            background: linear-gradient(120deg,#007bff,#00c1d4,#00ffab);
+            transition: height 0.8s ease,transform 0.8s ease;
+            transform: skewY(-3deg);
+        }
+        .liquid-range{
+            width: 200px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="liquid-meter">
+        <div class="liquid"></div>
+    </div>
+    <input type="range" class="liquid-range" min="0" max="100" value="50">
+    <script>
+        const liquid=document.querySelector('.liquid');
+        const liquidRange=document.querySelector('.liquid-range');
+        liquidRange.addEventListener('input',(e)=>{
+            const value=e.target.value;
+            liquid.style.height=`${value}%`;//Adjust Height
+        })
+
+    </script>  
+</body>
+</html>
