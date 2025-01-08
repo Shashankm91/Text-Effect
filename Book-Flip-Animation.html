@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition-Example2</title>
+    <style>
+        body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: #f3f3f3;
+}
+
+.book {
+  width: 200px;
+  height: 300px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  background: #ff6f61;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  backface-visibility: hidden;
+  transform-origin: left;
+  transition: transform 0.8s ease-in-out;
+}
+
+.details {
+  width: 100%;
+  height: 100%;
+  background: white;
+  color: black;
+  position: absolute;
+  padding: 20px;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  transform-origin: left;
+  transition: transform 0.8s ease-in-out;
+}
+
+.book:hover .cover {
+  transform: rotateY(-180deg);
+}
+
+.book:hover .details {
+  transform: rotateY(0);
+}
+
+    </style>
+</head>
+<body>
+    <div class="book">
+        <div class="cover">
+          <span>Hover to Open</span>
+        </div>
+        <div class="details">
+          <h2>Book Title</h2>
+          <p>Author: Jane Doe</p>
+          <p>Description: This book explores...</p>
+        </div>
+      </div>
+      
+</body>
+</html>
