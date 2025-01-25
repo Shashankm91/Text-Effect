@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flag Animation</title>
+    <style>
+        body {
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb);
+            background-position: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .greeting {
+            font-size: 2rem;
+            margin: 20px 0;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 75px #ff00ff;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 75px #ff00ff;
+            }
+
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 100px #ff00ff;
+            }
+        }
+
+        .flag-container {
+            display: inline-block;
+            position: relative;
+            margin-top: 20px;
+            width: 250px;
+            height: 150px;
+            background: linear-gradient(to bottom, orange 33%, white 33%, white 66%, green 66%);
+            animation: realisticwave 4s ease-in-out infinite;
+        }
+
+        @keyframes realisticwave {
+            0% {
+                transform: translateY(0) skewX(0);
+            }
+
+            25% {
+                transform: translateY(5px) skewX(-10deg);
+            }
+
+            50% {
+                transform: translateY(-4px) skewX(-6deg);
+            }
+
+            100% {
+                transform: translateY(0) skewX(0);
+            }
+        }
+
+        .chakra img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+        }
+        .flag-container::before,.flag-container::after{
+            content:"";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #fff;
+            animation: sparkle 1.5s infinite alternate;
+        }
+        .flag-container::before{
+            top:-20px;
+            left:50%;
+            transform: translateX(-50%);
+        }
+        .flag-container::after{
+            top:-20px;
+            left:50%;
+            transform: translateX(-50%);
+        }
+        @keyframes sparkle{
+            0%{opacity: 0; transform: scale(1);}
+            50%{opacity: 1; transform: scale(1.5);}
+            100%{opacity: 0; transform: scale(1);}
+        }
+    </style>
+</head>
+
+<body>
+    <div class="greeting">Happy Republic Day 2025</div>
+    <div class="flag-container">
+        <div class="chakra">
+            <img src="ashok-chakra.png" alt="ashok-chakra">
+        </div>
+    </div>
+</body>
+
+</html>
