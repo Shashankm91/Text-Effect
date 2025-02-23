@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Cube Reactor using HTML CSS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="enhanced-scene">
+    <div class="enhanced-cube">
+       <div class="face front"></div>
+       <div class="face back"></div>
+       <div class="face left"></div>
+       <div class="face right"></div>
+       <div class="face top"></div>
+       <div class="face bottom"></div>
+    </div>
+  </div>
+  <script>
+    // Interactive Rotation based on Mouse Movement
+    const scene=document.querySelector('.enhanced-scene');
+    const cube=document.querySelector('.enhanced-cube');
+
+    scene.addEventListener('mousemove',(event)=>{
+      const {offsetWidth,offsetHeight}=scene;
+      const x=((event.clientX/offsetWidth)-0.5) * 360;
+      const y=((event.clientY/offsetHeight)-0.5) * 360;
+       
+      cube.style.setProperty('--mouse-x',`${y}deg`);
+      cube.style.setProperty('--mouse-y',`${x}deg`); 
+    })
+
+  </script>
+</body>
+</html>

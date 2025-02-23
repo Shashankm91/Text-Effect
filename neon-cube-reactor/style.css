@@ -1,0 +1,89 @@
+/* 3D Scene Setup */
+.enhanced-scene{
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    width:300px;
+    height: 300px;
+    background: radial-gradient(circle,#000,#0a0a0a);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Cube Container */
+.enhanced-cube{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    transform-style: preserve-3d;
+    animation: spin-cube 10s infinite linear;
+}
+/* Cube Faces */
+.face{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg,rgba(255,0,255,0.6),rgba(0,255,255,0.6));
+    border: 2px solid transparent;
+    transition: box-shadow 0.5s background 0.5s;
+}
+.front{transform:rotateY(0deg) translateZ(75px);}
+.back{transform:rotateY(180deg) translateZ(75px);}
+.left{transform:rotateY(-90deg) translateZ(75px);}
+.right{transform:rotateY(90deg) translateZ(75px);}
+.top{transform:rotateX(90deg) translateZ(75px);}
+.bottom{transform:rotateX(-90deg) translateZ(75px);}
+
+/* Animation for cube rotation */
+@keyframes spin-cube {
+     0%{
+        transform: rotateX(0deg) rotateY(0deg);
+     }
+     100%{
+        transform: rotateX(360deg) rotateY(360deg);
+     }
+}
+/* Pulsing Neon Glow */
+.face::after{
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    border:2px solid rgba(255, 255, 255,0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255,0,255,0.6),rgba(0,255,255,0.6);
+    animation:pulse 3s infinite alternate;
+}
+@keyframes pulse {
+    0%{
+        box-shadow: 0 0 20px rgba(255,0,255,0.6),rgba(0,255,255,0.6);
+    }
+    100%{
+        box-shadow: 0 0 30px rgba(255,0,255,0.8),0 0 60px rgba(0,255,255,0.8);
+    }
+}
+/* Mouse Movement Interaction */
+.enhanced-scene:hover .enhanced-cube{
+    animation: none;
+}
+.enhanced-scene:hover .enhanced-cube{
+    transform: rotateX(var(--mouse-x)) rotateY(var(--mouse-y));
+    transition: transform 0.3s ease-out;
+}
+/* Background Effects */
+.enhanced-scene::before{
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle,rgba(255,0,255,0.2),rgba(0,0,0,0));
+    filter: blur(50px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+}
